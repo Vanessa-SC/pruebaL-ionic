@@ -8,7 +8,7 @@
 
 <ion-content class="ion-text-center">
   <ion-item-divider>
-    <ion-button expand="block" size="large" color="success" (click)="nuevo()">Agregar nuevo</ion-button>
+    <ion-button expand="block" size="large" color="success" routerLink="/add-persona">Agregar nuevo</ion-button>
   </ion-item-divider>
   <ion-grid>
     <ion-row>
@@ -25,22 +25,22 @@
 
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of personas">
+    <ion-row *ngFor="let persona of personas">
       <ion-col>
-        {{item.idPersona}}
+        {{persona.idPersona}}
       </ion-col>
       <ion-col>
-        {{item.nombre}}
+        {{persona.nombre}}
       </ion-col>
       <ion-col>
-        {{item.edad}}
+        {{persona.edad}}
       </ion-col>
       <ion-col>
         <ion-buttons>
-          <ion-button (click)="editar(item)" size="small" color="primary">
+          <ion-button (click)="actualizar( persona )" size="small" color="primary">
             <ion-icon name="create"></ion-icon>
           </ion-button>
-          <ion-button (click)="borrar(item)" size="small" color="danger">
+          <ion-button (click)="borrar( persona )" size="small" color="danger">
             <ion-icon name="trash"></ion-icon>
           </ion-button>
         </ion-buttons>

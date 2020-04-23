@@ -43,9 +43,9 @@ export class HttpService {
   }
 
   // FUNCION QUE ELIMINA UN REGISTRO
-  borrar(id:String) {
+  borrar(idPersona:String) {
     // Complementamos la URL con la ruta laravel
-    var url = this.httpConexion + 'eliminar/'+id;
+    var url = this.httpConexion + 'eliminar/'+idPersona;
     //Método que retorna el resultado
     return new Promise((resolve, reject) => {
       this.http.get(url)
@@ -74,6 +74,18 @@ export class HttpService {
     // Complementamos la URL con la ruta
     // creada en laravel
     var url = this.httpConexion + 'actualizarEdad/' + id + '/' + edad;
+    return new Promise((resolve, reject) => {
+      this.http.get(url)
+        .subscribe(data => {
+          resolve(data);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  updateP(id: string, nombre:string, edad: string) {
+    var url = this.httpConexion + 'update/' + id+'/'+nombre+'/'+edad+'/';
     return new Promise((resolve, reject) => {
       this.http.get(url)
         .subscribe(data => {
