@@ -84,7 +84,9 @@ export class HttpService {
     });
   }
 
+  //FUNCIÓN QUE MODIFICA AMBOS PARÁMETROS
   updateP(id: string, nombre:string, edad: string) {
+    // Complementamos la URL con la ruta laravel
     var url = this.httpConexion + 'update/' + id+'/'+nombre+'/'+edad+'/';
     return new Promise((resolve, reject) => {
       this.http.get(url)

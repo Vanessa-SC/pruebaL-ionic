@@ -33,7 +33,7 @@ export class HomePage {
   }
 
   borrar(persona){
-    this.http.borrar(persona.idPersonaPersona).then(
+    this.http.borrar(persona.idPersona).then(
       (inv) => {
         console.log(inv);
         var estado = inv['resultado'];

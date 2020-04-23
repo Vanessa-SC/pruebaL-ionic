@@ -42,7 +42,7 @@ export class AddPersonaPage implements OnInit {
           this.route.navigateByUrl('/home');
  
         }else{
-          this.mensajeToast("A ocurrido un error intenta mas tarde, o verifica tu conexion a internet");
+          this.mensajeToast("A ocurrido un error intenta mas tarde");
         }
       },
       (error) =>{
