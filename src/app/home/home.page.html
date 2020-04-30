@@ -7,8 +7,11 @@
 </ion-header>
 
 <ion-content class="ion-text-center">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
   <ion-item-divider>
-    <ion-button expand="block" size="large" color="success" routerLink="/add-persona">Agregar nuevo</ion-button>
+    <ion-button expand="block" class="ion-text-center" color="success" routerLink="/add-persona">Agregar nuevo</ion-button>
   </ion-item-divider>
   <ion-grid>
     <ion-row>

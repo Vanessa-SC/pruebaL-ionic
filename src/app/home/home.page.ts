@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { AlertController, ToastController } from '@ionic/angular';
 
@@ -7,9 +7,13 @@ import { AlertController, ToastController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   // Variable que almacenará los registros
   personas:any;
+
+  ngOnInit(){
+    this.mostrarDatos();
+  }
 
   constructor(
     private http: HttpService,
@@ -18,6 +22,7 @@ export class HomePage {
   ) {
     this.mostrarDatos();
   }
+
 
   mostrarDatos(){
     this.http.mostrarTodos().then( //llamado al método en http.service.ts
@@ -48,6 +53,8 @@ export class HomePage {
         alert("Verifica que cuentes con internet");
       }
     );
+    this.mostrarDatos();
+
   }
 
   async alerta(mensaje) {
@@ -66,7 +73,6 @@ export class HomePage {
         var estado = inv['resultado'];
         if (estado == "actualizado"){
           this.alerta("Actualizado con éxito.");
-
         } else {
           this.alerta("No se pudo actualizar, intente mas tarde");
         }
@@ -76,6 +82,7 @@ export class HomePage {
         alert("Verifica que cuentes con internet");
       }
     );
+    this.mostrarDatos();
   }  
 
   async actualizar( persona ) {
@@ -114,4 +121,16 @@ export class HomePage {
     });
     (await alert).present();
   }
+
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+    this.mostrarDatos();
+  }
+
 }
